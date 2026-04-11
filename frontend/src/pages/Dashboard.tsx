@@ -8,12 +8,15 @@ export default function Dashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if (!token) return navigate('/login')
+    if (!token) {
+      navigate('/login')
+      return
+    }
 
     getProfile(token)
       .then(res => setUser(res.data.user))
       .catch(() => navigate('/login'))
-  }, [])
+  }, [navigate])
 
   const logout = () => {
     localStorage.removeItem('token')
