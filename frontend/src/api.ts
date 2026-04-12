@@ -14,3 +14,23 @@ export const getProfile = (token: string) =>
   API.get('/profile', {
     headers: { Authorization: `Bearer ${token}` }
   })
+
+  export const getTopics = (token: string) =>
+  API.get('/topics', {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+
+export const getPatterns = (token: string, topicId: number) =>
+  API.get(`/topics/${topicId}/patterns`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+
+export const solveProblem = (token: string, problemId: number) =>
+  API.post(`/problems/${problemId}/solve`, {}, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+
+export const getDashboard = (token: string) =>
+  API.get('/dashboard', {
+    headers: { Authorization: `Bearer ${token}` }
+  })
