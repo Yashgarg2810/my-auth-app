@@ -15,9 +15,12 @@ export default function Dashboard() {
   const token = localStorage.getItem('token') || ''
 
   useEffect(() => {
-    if (!token) return navigate('/login')
-    loadDashboard()
-  }, [])
+  if (!token) {
+    navigate('/login')
+    return
+  }
+  loadDashboard()
+}, [])
 
   const loadDashboard = async () => {
     try {
