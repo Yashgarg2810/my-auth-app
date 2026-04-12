@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   const token = localStorage.getItem('token') || ''
 
-  useEffect(() => {
+ useEffect((): void => {
   if (!token) {
     navigate('/login')
     return
