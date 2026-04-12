@@ -13,16 +13,7 @@ export default function Dashboard() {
   const navigate = useNavigate()
 
   const token = localStorage.getItem('token') || ''
-
- useEffect((): void => {
-  if (!token) {
-    navigate('/login')
-    return
-  }
-  loadDashboard()
-}, [])
-
-  const loadDashboard = async () => {
+const loadDashboard = async () => {
     try {
       const [dashRes, topicsRes] = await Promise.all([
         getDashboard(token),
@@ -43,6 +34,16 @@ export default function Dashboard() {
       setLoading(false)
     }
   }
+  
+ useEffect(() => {
+  if (!token) {
+    navigate('/login')
+    return
+  }
+  void loadDashboard()
+}, [])
+
+  
 
   const loadPatterns = async (topic: any) => {
     setSelectedTopic(topic)
